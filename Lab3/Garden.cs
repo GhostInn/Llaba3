@@ -13,8 +13,7 @@ public class Garden<T> where T : Plant, new()
     public Garden(string gardener, int plantCount)
     {
         // Присваиваем свойству Gardener переданное имя садовника
-        Gardener = gardener;
-
+        Gardener = gardener ?? throw new Exception();
         // Создаем новый массив растений типа T с заданным количеством элементов
         Plants = new T[plantCount];
 
@@ -29,7 +28,7 @@ public class Garden<T> where T : Plant, new()
     public void Plant(int plantIndex, string plantSort)
     {
         // Присваиваем свойству Sort у растения с заданным индексом в массиве переданный сорт
-        Plants[plantIndex].Sort = plantSort;
+        Plants[plantIndex].Sort = plantSort ?? throw new Exception();
 
         // Выводим сообщение о том, что садовник посадил растение с заданным сортом
         Console.WriteLine($"Садовник {Gardener} посадил дерево {Plants[plantIndex].Sort}");
